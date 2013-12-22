@@ -1,0 +1,9 @@
+*.suo
+_Resharper*
+bin/
+obj/
+*.user
+
+#ncrunch
+*ncrunch*
+*crunch*.local.xml
