@@ -29,15 +29,16 @@ namespace RunGame
             for (int i = 34; i < 44; i++)
                 board[i, 45] = _boardService.CreateCell(true);
             var count = 0;
-            Console.ReadKey();
-            while (count < 1000)
+            var stopWatch = new System.Diagnostics.Stopwatch();
+            stopWatch.Start();
+            while (count < 100000)
             {
-                Console.Clear();
-                Console.Write(DrawBoard(board));
                 board = board.CreateTransistion();
-                Thread.Sleep(100);
                 count++;
-            }     
+            }  
+            stopWatch.Stop();
+            Console.WriteLine(stopWatch.Elapsed);
+            Console.ReadKey();
         }
 
         private static string DrawBoard(IBoard board)

@@ -12,20 +12,19 @@ namespace Conway.Game
             _cellFactory = cellFactory;
         }
 
-        public new IBoard CreateTransistion(IBoard currentBoard)
+        public override IBoard CreateTransistion(IBoard currentBoard)
         {
             var futureBoard = _boardFactory.CreateBoard(currentBoard.Size, this);
 
-            Parallel.For(0, currentBoard.Size, column => 
+            Parallel.For(0, currentBoard.Size, column => Parallel.For(0, currentBoard.Size, row =>
             {
-                for (var row = 0; row < currentBoard.Size; row++)
-                {
-                    futureBoard[column, row] = _cellFactory.CreateCell(
-                                            currentBoard[column, row].NextState(
-                                            currentBoard.NumberOfAliveNeighbours(column, row)));
-                }
-            });
+                futureBoard[column, row] = _cellFactory.CreateCell(
+                    currentBoard[column, row].NextState(
+                        currentBoard.NumberOfAliveNeighbours(column, row)));
+            }));
             return futureBoard;
         }
+
+        
     }
 }
