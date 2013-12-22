@@ -49,6 +49,7 @@
     <Compile Include="IBoardService.cs" />
     <Compile Include="ICell.cs" />
     <Compile Include="ICellFactory.cs" />
+    <Compile Include="ParallelBoardService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

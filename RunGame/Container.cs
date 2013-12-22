@@ -11,7 +11,7 @@ namespace RunGame
             var builder = new ContainerBuilder();
             builder.RegisterType<CellFactory>().As<ICellFactory>();
             builder.RegisterType<BoardFactory>().As<IBoardFactory>();
-            builder.RegisterType<BoardService>().As<IBoardService>();
+            builder.RegisterType<ParallelBoardService>().As<IBoardService>();
             builder.RegisterType<Board>().As<IBoard>();
             builder.RegisterType<Runtime>();
             var container = builder.Build();
