@@ -31,8 +31,10 @@ namespace RunGame
             var count = 0;
             var stopWatch = new System.Diagnostics.Stopwatch();
             stopWatch.Start();
-            while (count < 100000)
+            while (count < 10000)
             {
+                Console.Clear();
+                Console.Write(DrawBoard(board));
                 board = board.CreateTransistion();
                 count++;
             }  

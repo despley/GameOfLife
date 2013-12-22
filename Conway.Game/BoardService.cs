@@ -24,19 +24,19 @@
             return futureBoard;
         }
 
-        public ICell CreateCell(bool isAlive)
+        public virtual ICell CreateCell(bool isAlive)
         {
             return _cellFactory.CreateCell(isAlive);
         }
 
-        public int NumberOfAliveNeighbours(IBoard board, int x, int y)
+        public virtual int NumberOfAliveNeighbours(IBoard board, int x, int y)
         {
             var count = 0;
-            for (var column = x - 1; column <= x + 1; column++)
-                for (var row = y - 1; row <= y + 1; row++)
+            for (var column = -1; column <= 1; column++)
+                for (var row = -1; row <= 1; row++)
                 {
-                    if (!board[column, row].IsAlive) continue;
-                    if (!(column == x && row == y)) count++;
+                    if (!board[x + column, y + row].IsAlive) continue;
+                    if (!(x + column == x && y + row == y)) count++;
                 }
             return count;
         }
