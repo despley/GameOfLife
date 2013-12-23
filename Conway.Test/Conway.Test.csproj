@@ -53,6 +53,7 @@
     <Compile Include="CellFactoryTests.cs" />
     <Compile Include="CellTests.cs" />
     <Compile Include="BoardTests.cs" />
+    <Compile Include="ParallelBoardServiceTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
