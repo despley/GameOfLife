@@ -4,7 +4,9 @@ namespace Conway.Game
     {
         IBoard CreateTransition(IBoard currentBoard);
         ICell CreateCell(bool isAlive);
-        int NumberOfAliveNeighbours(IBoard board, int column, int row);
+        int NumberOfAliveNeighbours(IBoard board, Coordinate coordinate);
         IBoard CreateBoard(int size);
+        IBoard CreateBoard(int size, Coordinate[] coordinates);
+
     }
 }

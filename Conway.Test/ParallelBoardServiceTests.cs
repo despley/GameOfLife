@@ -17,16 +17,16 @@ namespace Conway.Test
             var boardService = new ParallelBoardService(boardFactory, cellFactory);
             A.CallTo(() => cellTrue.IsAlive).Returns(true);
             A.CallTo(() => cellFalse.IsAlive).Returns(false);
-            A.CallTo(() => board[0, 0]).Returns(cellTrue);
-            A.CallTo(() => board[0, 1]).Returns(cellTrue);
-            A.CallTo(() => board[0, 2]).Returns(cellTrue);
-            A.CallTo(() => board[1, 0]).Returns(cellTrue);
-            A.CallTo(() => board[1, 1]).Returns(cellTrue);
-            A.CallTo(() => board[1, 2]).Returns(cellTrue);
-            A.CallTo(() => board[2, 0]).Returns(cellTrue);
-            A.CallTo(() => board[2, 1]).Returns(cellTrue);
-            A.CallTo(() => board[2, 2]).Returns(cellTrue);
-            Assert.Equal(8, boardService.NumberOfAliveNeighbours(board, 1, 1));
+            A.CallTo(() => board[new Coordinate(0,0)]).Returns(cellTrue);
+            A.CallTo(() => board[new Coordinate(0, 1)]).Returns(cellTrue);
+            A.CallTo(() => board[new Coordinate(0, 2)]).Returns(cellTrue);
+            A.CallTo(() => board[new Coordinate(1, 0)]).Returns(cellTrue);
+            A.CallTo(() => board[new Coordinate(1, 1)]).Returns(cellTrue);
+            A.CallTo(() => board[new Coordinate(1, 2)]).Returns(cellTrue);
+            A.CallTo(() => board[new Coordinate(2, 0)]).Returns(cellTrue);
+            A.CallTo(() => board[new Coordinate(2, 1)]).Returns(cellTrue);
+            A.CallTo(() => board[new Coordinate(2, 2)]).Returns(cellTrue);
+            Assert.Equal(8, boardService.NumberOfAliveNeighbours(board, new Coordinate(1,1)));
         } 
     }
 }

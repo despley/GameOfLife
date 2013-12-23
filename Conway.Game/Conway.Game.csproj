@@ -44,6 +44,7 @@
     <Compile Include="Cell.cs" />
     <Compile Include="Board.cs" />
     <Compile Include="CellFactory.cs" />
+    <Compile Include="Coordinate.cs" />
     <Compile Include="IBoard.cs" />
     <Compile Include="IBoardFactory.cs" />
     <Compile Include="IBoardService.cs" />

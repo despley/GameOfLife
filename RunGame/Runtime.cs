@@ -15,16 +15,16 @@ namespace RunGame
         public void Go()
         {
             var board = _boardService.CreateBoard(50);
-            board[1, 32] = _boardService.CreateCell(true);
-            board[2, 32] = _boardService.CreateCell(true);
-            board[3, 32] = _boardService.CreateCell(true);
-            board[3, 33] = _boardService.CreateCell(true);
-            board[2, 34] = _boardService.CreateCell(true);
-            board[27, 43] = _boardService.CreateCell(true);
-            board[27, 44] = _boardService.CreateCell(true);
-            board[27, 45] = _boardService.CreateCell(true);
+            board[new Coordinate(1, 32)] = _boardService.CreateCell(true);
+            board[new Coordinate(2, 32)] = _boardService.CreateCell(true);
+            board[new Coordinate(3, 32)] = _boardService.CreateCell(true);
+            board[new Coordinate(3, 33)] = _boardService.CreateCell(true);
+            board[new Coordinate(2, 34)] = _boardService.CreateCell(true);
+            board[new Coordinate(27, 43)] = _boardService.CreateCell(true);
+            board[new Coordinate(27, 44)] = _boardService.CreateCell(true);
+            board[new Coordinate(27, 45)] = _boardService.CreateCell(true);
             for (int i = 34; i < 44; i++)
-                board[i, 45] = _boardService.CreateCell(true);
+                board[new Coordinate(i,45)] = _boardService.CreateCell(true);
             var count = 0;
             var stopWatch = new System.Diagnostics.Stopwatch();
             stopWatch.Start();
@@ -47,7 +47,7 @@ namespace RunGame
             {
                 for (var column = 0; column < board.Size; column++)
                 {
-                    sb.Append(board[row, column].IsAlive ? "*" : " ");
+                    sb.Append(board[new Coordinate(row, column)].IsAlive ? "*" : " ");
                 }
                 sb.AppendLine();
             }

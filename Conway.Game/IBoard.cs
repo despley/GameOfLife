@@ -3,8 +3,8 @@
     public interface IBoard
     {
         int Size { get; }
-        ICell this[int column, int row] { get; set; }
-        int NumberOfAliveNeighbours(int column, int row);
+        ICell this[Coordinate coordinate] { get; set; }
+        int NumberOfAliveNeighbours(Coordinate coordinate);
         IBoard CreateTransistion();
     }
 }

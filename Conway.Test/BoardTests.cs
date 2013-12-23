@@ -33,7 +33,7 @@ namespace Conway.Test
             var boardService = A.Fake<IBoardService>();
             var boardFactory = new BoardFactory();
             var board = boardFactory.CreateBoard(size, boardService);
-            Assert.False(board[x,y].IsAlive);
+            Assert.False(board[new Coordinate(x,y)].IsAlive);
         }
 
         [Fact]
@@ -43,8 +43,8 @@ namespace Conway.Test
             var boardFactory = new BoardFactory();
             var cellFactory = new CellFactory();
             var board = boardFactory.CreateBoard(1, boardService);
-            board[0, 0] = cellFactory.CreateCell(true);
-            Assert.True(board[0,0].IsAlive);
+            board[new Coordinate(0, 0)] = cellFactory.CreateCell(true);
+            Assert.True(board[new Coordinate(0, 0)].IsAlive);
         }
 
         [Fact]
@@ -53,10 +53,11 @@ namespace Conway.Test
             var boardService = A.Fake<IBoardService>();
             var boardFactory = new BoardFactory();
             var board = boardFactory.CreateBoard(1, boardService);
-            A.CallTo(() => boardService.NumberOfAliveNeighbours(board, 0, 0)).Returns(1);
-            var i = board.NumberOfAliveNeighbours(0, 0);
+            var coordinate = new Coordinate(0, 0);
+            A.CallTo(() => boardService.NumberOfAliveNeighbours(board, coordinate)).Returns(1);
+            var i = board.NumberOfAliveNeighbours(coordinate);
             Assert.Equal(1, i);
-            A.CallTo(() => boardService.NumberOfAliveNeighbours(board, 0, 0)).MustHaveHappened(Repeated.Exactly.Once);
+            A.CallTo(() => boardService.NumberOfAliveNeighbours(board,coordinate)).MustHaveHappened(Repeated.Exactly.Once);
         }
 
 

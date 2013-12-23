@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Security.Cryptography.X509Certificates;
 
 namespace Conway.Game
 {
@@ -18,15 +19,15 @@ namespace Conway.Game
             _board = new ICell[size, size];
             InitialiseBoard();
         }
-        public ICell this[int column, int row]
+        public ICell this[Coordinate coordinate]
         {
             get
             {
-                if(column < 0 || column >= Size || row<0 || row >=Size )
+                if (coordinate.Column < 0 || coordinate.Column >= Size || coordinate.Row < 0 || coordinate.Row >= Size)
                     return _boardService.CreateCell(false);
-                return _board[column,row];
+                return _board[coordinate.Column,coordinate.Row];
             }
-            set { _board[column, row] = value; }
+            set { _board[coordinate.Column, coordinate.Row] = value; }
         }
 
         private void InitialiseBoard()
@@ -40,9 +41,9 @@ namespace Conway.Game
             }
         }
 
-        public int NumberOfAliveNeighbours(int column, int row)
+        public int NumberOfAliveNeighbours(Coordinate coordinate)
         {
-            return _boardService.NumberOfAliveNeighbours(this, column, row);
+            return _boardService.NumberOfAliveNeighbours(this, coordinate);
         }
 
         public IBoard CreateTransistion()
