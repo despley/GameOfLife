@@ -29,14 +29,14 @@
             return _cellFactory.CreateCell(isAlive);
         }
 
-        public virtual int NumberOfAliveNeighbours(IBoard board, int x, int y)
+        public virtual int NumberOfAliveNeighbours(IBoard board, int column, int row)
         {
             var count = 0;
-            for (var column = -1; column <= 1; column++)
-                for (var row = -1; row <= 1; row++)
+            for (var x = -1; x <= 1; x++)
+                for (var y = -1; y <= 1; y++)
                 {
-                    if (!board[x + column, y + row].IsAlive) continue;
-                    if (!(x + column == x && y + row == y)) count++;
+                    if (!board[column + x, row + y].IsAlive) continue;
+                    if (!(column + x == column && row + y == row)) count++;
                 }
             return count;
         }

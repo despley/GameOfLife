@@ -25,9 +25,9 @@ namespace Conway.Game
             return futureBoard;
         }
 
-        public override int NumberOfAliveNeighbours(IBoard board, int x, int y)
+        public override int NumberOfAliveNeighbours(IBoard board, int column, int row)
         {
-            return base.NumberOfAliveNeighbours(board, x, y);
+            return base.NumberOfAliveNeighbours(board, column, row);
             //var count = 0;
             //Parallel.For(-1, 2, column => Parallel.For(-1,2,row =>
             //{

@@ -15,35 +15,34 @@ namespace Conway.Game
                 throw new ArgumentException("The size of the board must be 1 or greater");
             Size = size;
             _boardService = boardService;
-            var cells = new ICell[size, size];
-            _board = cells;
+            _board = new ICell[size, size];
             InitialiseBoard();
         }
-        public ICell this[int x, int y]
+        public ICell this[int column, int row]
         {
             get
             {
-                if(x < 0 || x >= Size || y<0 || y >=Size )
+                if(column < 0 || column >= Size || row<0 || row >=Size )
                     return _boardService.CreateCell(false);
-                return _board[x,y];
+                return _board[column,row];
             }
-            set { _board[x, y] = value; }
+            set { _board[column, row] = value; }
         }
 
         private void InitialiseBoard()
         {
-            for (var i = 0; i < Size; i++)
+            for (var column = 0; column < Size; column++)
             {
-                for (var j = 0; j < Size; j++)
+                for (var row = 0; row < Size; row++)
                 {
-                    _board[i, j] = _boardService.CreateCell(false);
+                    _board[column, row] = _boardService.CreateCell(false);
                 }
             }
         }
 
-        public int NumberOfAliveNeighbours(int x, int y)
+        public int NumberOfAliveNeighbours(int column, int row)
         {
-            return _boardService.NumberOfAliveNeighbours(this, x, y);
+            return _boardService.NumberOfAliveNeighbours(this, column, row);
         }
 
         public IBoard CreateTransistion()
