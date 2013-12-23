@@ -3,7 +3,7 @@
     public class Cell : ICell
     {
 
-        public Cell(bool isAlive)
+        internal Cell(bool isAlive)
         {
             IsAlive = isAlive;
         }

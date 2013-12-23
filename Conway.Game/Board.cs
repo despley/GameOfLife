@@ -9,7 +9,7 @@ namespace Conway.Game
         
         public int Size { get; private set; }
 
-        public Board(int size, IBoardService boardService)
+        internal Board(int size, IBoardService boardService)
         {
             if (size < 1)
                 throw new ArgumentException("The size of the board must be 1 or greater");
