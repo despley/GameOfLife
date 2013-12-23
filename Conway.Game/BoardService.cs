@@ -29,6 +29,11 @@
             return _cellFactory.CreateCell(isAlive);
         }
 
+        public virtual IBoard CreateBoard(int size)
+        {
+            return _boardFactory.CreateBoard(size, this);
+        }
+
         public virtual int NumberOfAliveNeighbours(IBoard board, int column, int row)
         {
             var count = 0;

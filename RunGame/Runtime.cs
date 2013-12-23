@@ -6,17 +6,15 @@ namespace RunGame
 {
     public class Runtime
     {
-        private readonly IBoardFactory _boardFactory;
         private readonly IBoardService _boardService;
-        public Runtime(IBoardFactory boardFactory, IBoardService boardService)
+        public Runtime(IBoardService boardService)
         {
-            _boardFactory = boardFactory;
             _boardService = boardService;
         }
 
         public void Go()
         {
-            var board = _boardFactory.CreateBoard(50, _boardService);
+            var board = _boardService.CreateBoard(50);
             board[1, 32] = _boardService.CreateCell(true);
             board[2, 32] = _boardService.CreateCell(true);
             board[3, 32] = _boardService.CreateCell(true);
