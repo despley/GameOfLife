@@ -45,7 +45,7 @@ namespace Conway.Test
             A.CallTo(() => cell.NextState(0)).Returns(false);
             A.CallTo(() => cellFactory.CreateCell(false)).Returns(cell);
             A.CallTo(() => boardFactory.CreateBoard(1, boardService)).Returns(futureBoard);
-            boardService.CreateTransistion(currentBoard);
+            boardService.CreateTransition(currentBoard);
             A.CallTo(() => cellFactory.CreateCell(false)).MustHaveHappened(Repeated.Exactly.Once);
             A.CallTo(() => currentBoard.Size).MustHaveHappened(Repeated.AtLeast.Once);
             A.CallTo(() => cell.NextState(0)).MustHaveHappened(Repeated.Exactly.Once);

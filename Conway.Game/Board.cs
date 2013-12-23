@@ -47,7 +47,7 @@ namespace Conway.Game
 
         public IBoard CreateTransistion()
         {
-            return _boardService.CreateTransistion(this);
+            return _boardService.CreateTransition(this);
         }
     }
 }

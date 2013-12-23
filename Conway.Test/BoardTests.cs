@@ -60,9 +60,9 @@ namespace Conway.Test
             var boardService = A.Fake<IBoardService>();
             var futureBoard = A.Fake<IBoard>();
             var board = new Board(1, boardService);
-            A.CallTo(() => boardService.CreateTransistion(board)).Returns(futureBoard);
+            A.CallTo(() => boardService.CreateTransition(board)).Returns(futureBoard);
             board.CreateTransistion();
-            A.CallTo(() => boardService.CreateTransistion(board)).MustHaveHappened(Repeated.Exactly.Once);
+            A.CallTo(() => boardService.CreateTransition(board)).MustHaveHappened(Repeated.Exactly.Once);
         }
 
     }

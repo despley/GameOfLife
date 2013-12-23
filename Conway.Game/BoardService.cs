@@ -9,7 +9,7 @@
             _boardFactory = boardFactory;
             _cellFactory = cellFactory;
         }
-        public virtual IBoard CreateTransistion(IBoard currentBoard)
+        public virtual IBoard CreateTransition(IBoard currentBoard)
         {
             var futureBoard = _boardFactory.CreateBoard(currentBoard.Size, this);
             for (var column = 0; column < currentBoard.Size; column++)

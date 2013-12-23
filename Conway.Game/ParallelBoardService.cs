@@ -12,7 +12,7 @@ namespace Conway.Game
             _cellFactory = cellFactory;
         }
 
-        public override IBoard CreateTransistion(IBoard currentBoard)
+        public override IBoard CreateTransition(IBoard currentBoard)
         {
             var futureBoard = _boardFactory.CreateBoard(currentBoard.Size, this);
 
