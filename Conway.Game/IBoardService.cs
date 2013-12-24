@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 namespace Conway.Game
 {
     public interface IBoardService
@@ -7,6 +9,6 @@ namespace Conway.Game
         int NumberOfAliveNeighbours(IBoard board, Coordinate coordinate);
         IBoard CreateBoard(int size);
         IBoard CreateBoard(int size, Coordinate[] coordinates);
-
+        IBoard CreateBoard(int size, IList<Coordinate> coordinates);
     }
 }

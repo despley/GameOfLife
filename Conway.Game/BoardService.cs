@@ -1,4 +1,6 @@
-﻿namespace Conway.Game
+﻿using System.Collections.Generic;
+
+namespace Conway.Game
 {
     public class BoardService : IBoardService
     {
@@ -41,6 +43,14 @@
             foreach (var coordinate in coordinates)
                 board[coordinate] = _cellFactory.CreateCell(true);
             return board; 
+        }
+
+        public IBoard CreateBoard(int size, IList<Coordinate> coordinates)
+        {
+            var board = _boardFactory.CreateBoard(size, this);
+            foreach (var coordinate in coordinates)
+                board[coordinate] = _cellFactory.CreateCell(true);
+            return board;
         }
 
         public virtual int NumberOfAliveNeighbours(IBoard board, Coordinate coordinate)

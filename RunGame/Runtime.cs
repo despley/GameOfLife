@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Text;
+using System.Threading;
 using Conway.Game;
 
 namespace RunGame
@@ -14,26 +16,15 @@ namespace RunGame
 
         public void Go()
         {
-            var board = _boardService.CreateBoard(50);
-            board[new Coordinate(1, 32)] = _boardService.CreateCell(true);
-            board[new Coordinate(2, 32)] = _boardService.CreateCell(true);
-            board[new Coordinate(3, 32)] = _boardService.CreateCell(true);
-            board[new Coordinate(3, 33)] = _boardService.CreateCell(true);
-            board[new Coordinate(2, 34)] = _boardService.CreateCell(true);
-            board[new Coordinate(27, 43)] = _boardService.CreateCell(true);
-            board[new Coordinate(27, 44)] = _boardService.CreateCell(true);
-            board[new Coordinate(27, 45)] = _boardService.CreateCell(true);
-            for (int i = 34; i < 44; i++)
-                board[new Coordinate(i,45)] = _boardService.CreateCell(true);
-            var count = 0;
+            var board = _boardService.CreateBoard(30, CreateCoordinates());
             var stopWatch = new System.Diagnostics.Stopwatch();
             stopWatch.Start();
-            while (count < 10000)
+            for(var i = 0; i< 10000; i++)
             {
                 Console.Clear();
                 Console.Write(DrawBoard(board));
                 board = board.CreateTransistion();
-                count++;
+                Thread.Sleep(100);
             }  
             stopWatch.Stop();
             Console.WriteLine(stopWatch.Elapsed);
@@ -47,11 +38,30 @@ namespace RunGame
             {
                 for (var column = 0; column < board.Size; column++)
                 {
-                    sb.Append(board[new Coordinate(row, column)].IsAlive ? "*" : " ");
+                    sb.Append(board[new Coordinate(column, row)].IsAlive ? "*" : " ");
                 }
                 sb.AppendLine();
             }
             return sb.ToString();
+        }
+
+        private IList<Coordinate> CreateCoordinates()
+        {
+            var coordinates = new List<Coordinate>()
+            {
+                new Coordinate(1, 12),
+                new Coordinate(2, 12),
+                new Coordinate(3, 12),
+                new Coordinate(3, 13),
+                new Coordinate(3, 13),
+                new Coordinate(2, 14),
+                new Coordinate(27, 16),
+                new Coordinate(27,17),
+                new Coordinate(27, 18)
+            };
+            for (int i = 14; i < 24; i++)
+                coordinates.Add(new Coordinate(i, 8));
+            return coordinates;
         }
     }
 }

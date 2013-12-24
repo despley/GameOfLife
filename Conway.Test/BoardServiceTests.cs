@@ -1,7 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using Conway.Game;
 using FakeItEasy;
-using FakeItEasy.ExtensionSyntax.Full;
 using Xunit;
 
 namespace Conway.Test
@@ -57,7 +57,7 @@ namespace Conway.Test
         }
 
         [Fact]
-        public void CanCreateBoardWithIntArrayOfCoordinates()
+        public void CanCreateBoardWithArrayOfCoordinates()
         {
             var cell = A.Fake<ICell>();
             var board = new BoardStubb();
@@ -77,6 +77,42 @@ namespace Conway.Test
             Assert.Equal(cell, newBoard[new Coordinate(0, 0)]);
             Assert.Equal(cell, newBoard[new Coordinate(1, 1)]);
             Assert.Equal(null, newBoard[new Coordinate(0, 1)]);
+        }
+
+        [Fact]
+        public void CanCreateBoardWithIListOfCoordinates()
+        {
+            var cell = A.Fake<ICell>();
+            var board = new BoardStubb();
+            var cellFactory = A.Fake<ICellFactory>();
+            var boardFactory = A.Fake<IBoardFactory>();
+            var boardService = new BoardService(boardFactory, cellFactory);
+            var coordinate = new List<Coordinate>
+            {
+                new Coordinate(0,0),new Coordinate(1,1) 
+            };
+            A.CallTo(() => boardFactory.CreateBoard(5, boardService)).Returns(board);
+            A.CallTo(() => cellFactory.CreateCell(true)).Returns(cell);
+            A.CallTo(() => cell.IsAlive).Returns(true);
+            var newBoard = boardService.CreateBoard(5, coordinate);
+            A.CallTo(() => boardFactory.CreateBoard(5, boardService)).MustHaveHappened(Repeated.Exactly.Once);
+            A.CallTo(() => cellFactory.CreateCell(true)).MustHaveHappened(Repeated.Exactly.Twice);
+            Assert.Equal(cell, newBoard[new Coordinate(0, 0)]);
+            Assert.Equal(cell, newBoard[new Coordinate(1, 1)]);
+            Assert.Equal(null, newBoard[new Coordinate(0, 1)]);
+        }
+
+        [Fact]
+        public void CanCreateBoardAndCells()
+        {
+            var boardFactory = A.Fake<IBoardFactory>();
+            var cellFactory = A.Fake<ICellFactory>();
+            var boardService = new BoardService(boardFactory, cellFactory);
+            boardService.CreateCell(true);
+            boardService.CreateBoard(50);
+            A.CallTo(() => boardFactory.CreateBoard(50, boardService)).MustHaveHappened(Repeated.Exactly.Once);
+            A.CallTo(() => cellFactory.CreateCell(true)).MustHaveHappened(Repeated.Exactly.Once);
+
         }
     }
 
