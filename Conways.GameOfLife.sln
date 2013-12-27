@@ -9,6 +9,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Conway.Test", "Conway.Test\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RunGame", "RunGame\RunGame.csproj", "{97E31496-3D0D-48F2-AC14-8D9C6405B238}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Conway.InfiniteGame", "Conway.InfiniteGame\Conway.InfiniteGame.csproj", "{A32E4C0F-23F6-49CF-804A-FB7A49420D25}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Conway.InfiniteGameTests", "Conway.InfiniteGameTests\Conway.InfiniteGameTests.csproj", "{14A20EC5-750F-460E-B725-5A9491624BA5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +31,14 @@ Global
 		{97E31496-3D0D-48F2-AC14-8D9C6405B238}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{97E31496-3D0D-48F2-AC14-8D9C6405B238}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{97E31496-3D0D-48F2-AC14-8D9C6405B238}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A32E4C0F-23F6-49CF-804A-FB7A49420D25}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A32E4C0F-23F6-49CF-804A-FB7A49420D25}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A32E4C0F-23F6-49CF-804A-FB7A49420D25}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A32E4C0F-23F6-49CF-804A-FB7A49420D25}.Release|Any CPU.Build.0 = Release|Any CPU
+		{14A20EC5-750F-460E-B725-5A9491624BA5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{14A20EC5-750F-460E-B725-5A9491624BA5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{14A20EC5-750F-460E-B725-5A9491624BA5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{14A20EC5-750F-460E-B725-5A9491624BA5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
